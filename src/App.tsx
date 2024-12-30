@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import HomeComponent from './components/Home'
 import LoginPage from './components/Login'
 import SignupPage from './components/Signup'
-import UploadPage from './components/Upload';
+import UploadPage from './components/UploadPage';
 
 function App() {
 

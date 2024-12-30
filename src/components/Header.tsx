@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { HeaderProps } from '../Interfaces/ExamPaperResponse';
 import millerLogo from '../assets/audit.png'
 import axios from 'axios';
-export default function Header({onSearchResults}){
+
+export default function Header({onSearchResults}:HeaderProps){
 
     const [userSearch, setUserSearch] = useState({
         text:''
@@ -10,7 +12,7 @@ export default function Header({onSearchResults}){
 
     async function fetchPapers(){
         try{
-          const userInput = userSearch.text.toLowerCase();
+         // const userInput = userSearch.text.toLowerCase();
           const response = await axios.get(`http://localhost:8080/exam-papers/get-all`);
           console.log(response.data);
           onSearchResults(response.data)
@@ -25,7 +27,7 @@ export default function Header({onSearchResults}){
     }, []);
 
 
-    function handleChange(e){
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>){
         setUserSearch({
             ...userSearch,
             [e.target.name]:e.target.value
@@ -59,20 +61,9 @@ export default function Header({onSearchResults}){
                 <button className="btn btn-outline-success" type="submit">Search</button>
               </form>
               
-          
-              <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Action</a></li>
-                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-              </ul>
+            
+            
+
             </div>
           </div>
         </nav>

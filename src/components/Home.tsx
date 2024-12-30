@@ -2,11 +2,12 @@ import { useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./MainPage";
+import {ExamPaperDto} from '../Interfaces/ExamPaperResponse';
 
 export default function HomeComponent(){
-    const [searchData, setData] = useState([]);
+    const [searchData, setData] = useState<ExamPaperDto[]>([]);
 
-    const handleSearchResults = (data) =>{
+    const handleSearchResults = (data: ExamPaperDto[]) =>{
       setData(data);
     };
 

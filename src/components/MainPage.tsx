@@ -1,4 +1,5 @@
-export default function Main({retrivedPapers}){
+import { MainProps } from "../Interfaces/ExamPaperResponse"
+export default function Main({retrivedPapers}: MainProps){
     return(
         <main className="flex-fill overflow-auto">
              <div className="container mt-4">
