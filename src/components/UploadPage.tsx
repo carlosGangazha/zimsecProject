@@ -13,7 +13,7 @@ function PageNavBar(){
         <nav className="navbar bg-body-tertiary">
         <form className="container-fluid justify-content-start">
          <a href="/" className="btn btn-outline-success me-2">Home</a>
-         <button className="btn btn-sm btn-outline-secondary " type="button">Logout</button>
+         <a href="/login" className="btn btn-outline-success me-2">Logout</a>
          </form>
         </nav>
     )

@@ -12,7 +12,7 @@ export default function Header({onSearchResults}:HeaderProps){
 
     async function fetchPapers(){
         try{
-         // const userInput = userSearch.text.toLowerCase();
+        
           const response = await axios.get(`http://localhost:8080/exam-papers/get-all`);
           console.log(response.data);
           onSearchResults(response.data)
@@ -21,7 +21,18 @@ export default function Header({onSearchResults}:HeaderProps){
           console.log(error)
         };
     }
-
+    async function fetchSearched(e:React.FormEvent<HTMLFormElement>){
+      e.preventDefault();
+      try{
+        const userInput = userSearch.text.toLowerCase();
+         const response = await axios.get(`http://localhost:8080/exam-papers/search/${userInput}`);
+         console.log(response.data);
+         onSearchResults(response.data);
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
     useEffect(()=>{
       fetchPapers();
     }, []);
@@ -56,14 +67,11 @@ export default function Header({onSearchResults}:HeaderProps){
               </ul>
               
              
-              <form className="d-flex justify-content-center flex-grow-1 mx-4"  onSubmit={fetchPapers}>
+              <form className="d-flex justify-content-center flex-grow-1 mx-4" onSubmit={fetchSearched}>
                 <input className="form-control me-2 w-50" type="text" placeholder="Search" aria-label="Search" name="text" onChange={handleChange}/>
                 <button className="btn btn-outline-success" type="submit">Search</button>
               </form>
               
-            
-            
-
             </div>
           </div>
         </nav>
